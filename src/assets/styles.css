@@ -70,6 +70,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   
   h1 {
     font-weight: 100;
+    margin-bottom: 60px;
   }
   
   label {

@@ -1,5 +1,8 @@
 <template>
+  <button class="checkout" @click="addProduct">Add 3rd product</button>
+
   <h1>Shopping Cart</h1>
+
   <div class="shopping-cart">
     <div class="column-labels">
       <label class="product-image">Image</label>
@@ -81,6 +84,10 @@ export default {
       store.commit("removeFromCart", id);
     };
 
+    const addProduct = () => {
+      store.commit("addProduct");
+    };
+
     const changeQuantity = (id) => {
       console.log(id);
     };
@@ -93,6 +100,7 @@ export default {
       changeQuantity,
       cartGrandTotalPlusTax,
       DELIVERY_COST,
+      addProduct,
     };
   },
 };

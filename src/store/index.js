@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import { products } from "@/producs";
+import { products, product3 } from "@/producs";
 
 export default createStore({
   state: {
@@ -18,11 +18,14 @@ export default createStore({
     removeFromCart(state, id) {
       state.cart = state.cart.filter((i) => i.id !== id);
     },
+    addProduct(state) {
+      state.cart = [...state.cart, product3];
+    },
     changeQuantity(state, { id, quantity }) {
       const item = state.cart.find((i) => i.id === id);
       item.quantity = quantity;
     },
   },
   actions: {},
-  modules: {},
+  // plugins: [createLogger()]
 });

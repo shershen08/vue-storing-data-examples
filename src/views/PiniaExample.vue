@@ -1,4 +1,6 @@
 <template>
+  <button class="checkout" @click="store.addProduct">Add 3rd product</button>
+
   <h1>Shopping Cart</h1>
   <div class="shopping-cart">
     <div class="column-labels">
@@ -58,6 +60,7 @@
         </div> -->
       </div>
     </div>
+    <div class="totals" v-else>Cart is empty</div>
 
     <button class="checkout" v-if="store.cartTotal > 0">Checkout</button>
   </div>
@@ -65,15 +68,13 @@
 
 <script>
 import { useCartStore } from "@/pinia/cart";
+// import {mapStores, mapActions} from 'pinia'
 
 export default {
   setup() {
     const store = useCartStore();
     const TAX_VALUE = 1.05;
     const DELIVERY_COST = 15;
-
-    // const cartTotal = computed(() => store.getters.cartTotal);
-    // const products = computed(() => store.state.cart);
 
     const remove = (id) => {
       store.removeFromCart(id);
@@ -86,15 +87,20 @@ export default {
     return {
       store,
       TAX_VALUE,
-      // products,
-      // cartTotal,
       remove,
-      // cartTotalPlusTax,
       changeQuantity,
-      // cartGrandTotalPlusTax,
       DELIVERY_COST,
     };
   },
+  //
+  //Vue2 style
+  //
+  // methods: {
+  // ...mapState(storename, ['cart'])
+  // },
+  // computed: {
+  // ...mapActions(storename, ['actionname']),
+  // }
 };
 </script>
 
