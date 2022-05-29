@@ -14,7 +14,8 @@ export const useUserStore = defineStore("user", {
       this.user = data;
     },
     logout() {
-      this.user = {};
+      this.$reset();
+      // this.user = {};
     },
   },
   getters: {
