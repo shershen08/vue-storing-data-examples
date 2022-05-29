@@ -13,29 +13,12 @@
       <label class="product-line-price">Total</label>
     </div>
 
-    <div class="product" v-for="p in store.cart" :key="p.id">
-      <div class="product-image">
-        <img :src="p.image" />
-      </div>
-      <div class="product-details">
-        <div class="product-title">{{ p.title }}</div>
-      </div>
-      <div class="product-price">{{ p.price.toFixed(2) }}</div>
-      <div class="product-quantity">
-        <input
-          type="number"
-          min="1"
-          v-model="p.quantity"
-          @change="changeQuantity(p.id)"
-        />
-      </div>
-      <div class="product-removal">
-        <button class="remove-product" @click="store.removeFromCart(p.id)">
-          Remove
-        </button>
-      </div>
-      <div class="product-line-price">{{ p.price * p.quantity }}</div>
-    </div>
+    <ProductItem
+      :p="p"
+      v-for="p in store.cart"
+      :key="p.id"
+      @remove="store.removeFromCart"
+    />
 
     <div class="totals" v-if="store.cartTotal > 0">
       <div class="totals-item">
@@ -87,6 +70,7 @@
 import { useCartStore, DISCOUNT } from "@/pinia/cart";
 import { useUserStore } from "@/pinia/user";
 import UserProfile from "./UserProfile.vue";
+import ProductItem from "./ProductItem.vue";
 // import { useUserStore } from "@/pinia/user";
 // import {mapStores, mapActions} from 'pinia'
 
@@ -115,6 +99,7 @@ export default {
   },
   components: {
     UserProfile,
+    ProductItem,
   },
   //
   // Vue2 style
