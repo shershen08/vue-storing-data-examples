@@ -1,8 +1,20 @@
 import { defineStore } from "pinia";
 import { products, product3 } from "@/producs";
 
+import { useUserStore } from "@/pinia/user";
+
 const TAX_VALUE = 1.05;
 const DELIVERY_COST = 15;
+export const DISCOUNT = {
+  BASIC: {
+    label: "0",
+    math: 1,
+  },
+  PREMIUM: {
+    label: "10%",
+    math: 0.9,
+  },
+};
 
 export const useCartStore = defineStore("cart", {
   state: () => ({
@@ -14,6 +26,14 @@ export const useCartStore = defineStore("cart", {
     },
     addProduct() {
       this.cart = [...this.cart, product3];
+    },
+    refillCart() {
+      this.$reset();
+    },
+    clearCart() {
+      this.$patch({
+        cart: [],
+      });
     },
   },
   getters: {
@@ -33,9 +53,18 @@ export const useCartStore = defineStore("cart", {
     cartGrandTotalPlusTax() {
       return Number(this.cartTotalPlusTax + DELIVERY_COST).toFixed(2);
     },
+    cartGrandTotalPlusTaxSubstractDiscount() {
+      const user = useUserStore();
+      let value = this.cartTotalNumPlusTax;
+      if (user.userStatus) {
+        const discount = DISCOUNT[user.userStatus].math;
+        value = value * discount;
+      }
+      return Number(value + DELIVERY_COST).toFixed(2);
+    },
   },
 });
 
-// export function myPiniaPlugin(context) {
-//   console.log('Pinia store chaged: ', context.store)
-// }
+export function myPiniaPlugin(context) {
+  console.log("Pinia store chaged: ", context.store);
+}

@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import { createStore, createLogger } from "vuex";
 import { products, product3 } from "@/producs";
 
 export default createStore({
@@ -27,5 +27,5 @@ export default createStore({
     },
   },
   actions: {},
-  // plugins: [createLogger()]
+  plugins: [createLogger()],
 });

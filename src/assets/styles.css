@@ -145,6 +145,10 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     width: 21%;
     text-align: right;
   }
+  .totals-item.client {
+    border: 3px solid #d3434380;
+    padding: 2px;
+  }
   .totals .totals-item-total {
     font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
   }
