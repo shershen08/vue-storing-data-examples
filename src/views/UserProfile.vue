@@ -1,11 +1,13 @@
 <template>
   <template v-if="store.loggedIn">
-    <button @click="setPremium">setPremium</button>
-    <button @click="logout">logout</button>
+    <button @click="setPremium" data-test="set-premium">setPremium</button>
+    <button @click="logout" data-test="logout">logout</button>
   </template>
-  <button v-else @click="login(user)">login</button>
+  <button v-else @click="login(user)" data-test="login">login</button>
 
-  <template v-if="store.loggedIn"> Wellcome, {{ store.user.name }} </template>
+  <template v-if="store.loggedIn">
+    <div id="user-greeting">Wellcome, {{ store.user.name }}</div>
+  </template>
 </template>
 
 <script>

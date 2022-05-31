@@ -28,6 +28,6 @@ export const useUserStore = defineStore("user", {
   },
 });
 
-export function myPiniaPlugin(context) {
-  console.log("User store chaged: ", context.store);
-}
+// export function myPiniaPlugin(context) {
+//   console.log("User store chaged: ", context.store);
+// }

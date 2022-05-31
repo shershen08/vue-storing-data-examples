@@ -34,6 +34,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ProvideExample.vue"),
   },
+  {
+    path: "/data-load",
+    name: "products",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/CategoryPage.vue"),
+  },
 ];
 
 const router = createRouter({

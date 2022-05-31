@@ -3,6 +3,7 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/cart-vuex">vuex</router-link> |
     <router-link to="/cart-pinia">pinia</router-link> |
+    <router-link to="/data-load">data-load</router-link> |
   </nav>
   <router-view />
 </template>

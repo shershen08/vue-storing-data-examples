@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve:production": "vue-cli-service serve --mode production",
+    "build": "vue-cli-service build --report",
     "test:unit": "vue-cli-service test:unit",
     "test:unit-watch": "vue-cli-service test:unit --watch",
     "lint": "vue-cli-service lint --fix"
   },
   "dependencies": {
+    "@pinia/testing": "^0.0.12",
     "core-js": "^3.8.3",
+    "gsap": "^3.10.4",
     "pinia": "^2.0.14",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
