@@ -1,2 +1,3 @@
-export const getProducts = () =>
-  fetch("https://fakestoreapi.com/products").then((res) => res.json());
+import axios from "axios";
+
+export const getProducts = () => axios.get("https://fakestoreapi.com/products");
